@@ -12,5 +12,5 @@ dependencies {
     implementation(libs.boot.actuator)
     implementation(libs.boot.web)
 
-    developmentOnly(project(":jweb-console-spring-boot-starter"))
+    developmentOnly(project(":jweb-console-starter:jweb-console-spring-boot-starter"))
 }

@@ -19,7 +19,7 @@ gradleplugin-micronaut = { module = "io.micronaut.gradle:micronaut-gradle-plugin
 
 gradleplugin-release = { module = "net.researchgate:gradle-release", version = "3.0.2" }
 gradleplugin-sonarqube = { module = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin", version = "4.0.0.2929" }
-gradleplugin-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "6.18.0" }
+gradleplugin-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.0.4" }
 
 groovy-jsr223 = { module = "org.apache.groovy:groovy-jsr223", version.ref = "groovy" }
 jruby-base = { module = "org.jruby:jruby-base", version.ref = "jruby" }

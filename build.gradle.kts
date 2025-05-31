@@ -26,7 +26,7 @@ dependencies {
 reporting {
     reports {
         val testCodeCoverageReport by creating(JacocoCoverageReport::class) {
-            testType.set(TestSuiteType.UNIT_TEST)
+            testSuiteName.set("test")
         }
     }
 }
@@ -38,16 +38,22 @@ tasks.check {
 spotless {
     format("misc") {
         target("**/.gitignore", "**/*.gradle", "README.md")
-        indentWithSpaces()
+        leadingTabsToSpaces()
         trimTrailingWhitespace()
         endWithNewline()
+    }
+}
+
+tasks.register("hello") {
+    doLast {
+        println(allStarterSubModules)
     }
 }
 
 sonarqube {
     properties {
         val sonarToken = project.findProperty("sonar.token")?.toString() ?: System.getenv("SONAR_TOKEN")
-        val jacocoReportPath = "${project.buildDir.absolutePath}/reports/jacoco/testCodeCoverageReport"
+        val jacocoReportPath = project.layout.buildDirectory.dir("reports/jacoco/testCodeCoverageReport").get().asFile.absolutePath
         val lcovReportPath = "${project("jweb-console-webcli").projectDir.absolutePath}/coverage/"
 
         property("sonar.sourceEncoding", "UTF-8")

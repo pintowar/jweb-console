@@ -12,9 +12,9 @@ val Project.allLangSubModules: List<Project>
     get() = this.rootProject
             .subprojects
             .filter { it.plugins.hasPlugin("jweb-console.base") }
-            .filter { it.name.startsWith("jweb-console-lang-") }
+            .filter { it.path.startsWith(":jweb-console-lang:") }
 
 val Project.allStarterSubModules: List<Project>
     get() = this.rootProject
             .subprojects
-            .filter { it.name.startsWith("jweb-console-") && it.name.endsWith("-starter") }
+            .filter { it.path.startsWith(":jweb-console-starter:") }

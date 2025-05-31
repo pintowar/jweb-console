@@ -11,7 +11,7 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion.set(JavaLanguageVersion.of(11))
     }
 }
 
@@ -23,7 +23,7 @@ spotless {
     java {
         googleJavaFormat()
         removeUnusedImports()
-        indentWithSpaces()
+        leadingTabsToSpaces()
         importOrder()
         formatAnnotations()
         endWithNewline()
