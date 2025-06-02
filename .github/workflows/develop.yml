@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          ref: develop
 
       - uses: n1hility/cancel-previous-runs@v3
         with:
@@ -29,7 +31,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRO }}
 
       - name: Running gradle task
-        uses: gradle/gradle-build-action@v2.4.2
+        uses: gradle/actions/setup-gradle@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
