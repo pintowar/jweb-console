@@ -56,7 +56,7 @@ sonarqube {
         property("sonar.projectKey", "pintowar_jweb-console")
         property("sonar.projectVersion", project.version.toString())
         property("sonar.host.url", "https://sonarcloud.io")
-        property("sonar.login", sonarToken)
+        property("sonar.token", sonarToken)
         property("sonar.verbose", true)
         property("sonar.github.repository", "pintowar/jweb-console")
         property("sonar.exclusions", "*/src/test/**,**/sample/*.java")
