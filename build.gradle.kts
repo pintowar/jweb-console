@@ -44,12 +44,6 @@ spotless {
     }
 }
 
-tasks.register("hello") {
-    doLast {
-        println(allStarterSubModules)
-    }
-}
-
 sonarqube {
     properties {
         val sonarToken = project.findProperty("sonar.token")?.toString() ?: System.getenv("SONAR_TOKEN")

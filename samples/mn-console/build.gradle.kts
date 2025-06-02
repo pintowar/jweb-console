@@ -11,9 +11,9 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     implementation("io.micronaut:micronaut-jackson-databind")
     implementation("jakarta.annotation:jakarta.annotation-api")
-    runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
 
+    runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly(project(":jweb-console-starter:jweb-console-micronaut-starter"))
 }
 

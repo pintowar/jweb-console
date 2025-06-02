@@ -8,8 +8,8 @@ tasks.processResources {
     dependsOn("$webCli:build")
 
     doLast {
-        val origin = project(webCli).buildDir.absolutePath
-        val dest = "${project.buildDir.absolutePath}/resources/main/public/console"
+        val origin = project(webCli).layout.buildDirectory.get().asFile.absolutePath
+        val dest = project.layout.buildDirectory.dir("resources/main/public/console").get().asFile.absolutePath
         copy {
             from(origin)
             into(dest)

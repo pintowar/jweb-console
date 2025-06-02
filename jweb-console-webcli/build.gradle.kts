@@ -7,7 +7,7 @@ plugins {
 
 description = "JWeb Console Client"
 
-project.buildDir = file("dist")
+project.layout.buildDirectory.set(file("dist"))
 
 node {
     version.set("16.15.1")
@@ -37,7 +37,7 @@ tasks {
     }
 
     register<Delete>("clean") {
-        delete(project.buildDir)
+        delete(project.layout.buildDirectory)
         delete("${project.projectDir}/coverage")
     }
 
