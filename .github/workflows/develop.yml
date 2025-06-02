@@ -32,11 +32,11 @@ jobs:
 
       - name: Running gradle task
         uses: gradle/actions/setup-gradle@v4
+
+      - name: Code check and Sonar publish
+        run: ./gradlew clean spotlessCheck sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
           SONATYPE_PASS: ${{ secrets.SONATYPE_PASS }}
-        with:
-          gradle-version: wrapper
-          arguments: clean spotlessCheck sonar
