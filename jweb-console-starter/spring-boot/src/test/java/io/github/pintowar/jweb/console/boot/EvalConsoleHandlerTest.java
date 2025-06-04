@@ -8,8 +8,8 @@ import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 
 import io.github.pintowar.jweb.console.repl.Repl;
 import io.github.pintowar.jweb.console.repl.ScriptResult;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Set;
-import javax.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.springframework.context.ApplicationContext;

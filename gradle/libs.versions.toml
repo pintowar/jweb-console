@@ -1,14 +1,15 @@
 [versions]
-boot-gradle = "2.4.3"
-management-gradle = "1.0.11.RELEASE"
+boot-gradle = "3.0.5"
+management-gradle = "1.1.0"
 micronaut-gradle = "3.7.8"
 micronaut = "3.5.1"
 node = "3.1.1"
 
+servlet = "6.0.0"
 junit = "5.9.2"
 groovy = "4.0.11"
 jruby = "9.4.2.0"
-kotlin = "1.8.21"
+kotlin = "1.7.22"
 assertj = "3.24.2"
 mockito = "4.11.0"
 
@@ -35,6 +36,8 @@ boot-configuration-processor = { module = "org.springframework.boot:spring-boot-
 
 micronaut-router = { module = "io.micronaut:micronaut-router", version.ref = "micronaut" }
 micronaut-validation = { module = "io.micronaut:micronaut-http-validation", version.ref = "micronaut" }
+
+jakarta-servlet = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "servlet" }
 
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }

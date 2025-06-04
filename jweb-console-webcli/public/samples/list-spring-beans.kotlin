@@ -1,4 +1,4 @@
 // list all spring boot beans (must adapt to work on other frameworks)
-applicationContext.getBeanDefinitionNames().sorted().each {
+applicationContext.getBeanDefinitionNames().sorted().forEach {
     println(it)
 }
