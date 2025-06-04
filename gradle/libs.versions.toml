@@ -8,6 +8,7 @@ node = "3.1.1"
 junit = "5.9.2"
 groovy = "4.0.11"
 jruby = "9.4.2.0"
+kotlin = "1.8.21"
 assertj = "3.24.2"
 mockito = "4.11.0"
 
@@ -23,6 +24,7 @@ gradleplugin-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle
 
 groovy-jsr223 = { module = "org.apache.groovy:groovy-jsr223", version.ref = "groovy" }
 jruby-base = { module = "org.jruby:jruby-base", version.ref = "jruby" }
+kotlin-jsr223 = { module = "org.jetbrains.kotlin:kotlin-scripting-jsr223", version.ref = "kotlin" }
 
 boot-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "boot-gradle" }
 boot-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "boot-gradle" }
