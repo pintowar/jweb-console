@@ -14,7 +14,7 @@ public class KotlinRepl extends ReplJsr223 {
 
   private final Pattern printlnPattern = Pattern.compile("(?<!\\w\\.)println\\s*\\(");
   private final Pattern printPattern = Pattern.compile("(?<!\\w\\.)print(?!ln)\\s*\\(");
-  final String kotlinReplStdOut = "z7_0v7";
+  static final String KOTLIN_REPL_STD_OUT = "z7_0v7";
 
   public KotlinRepl() {
     super();
@@ -35,18 +35,18 @@ public class KotlinRepl extends ReplJsr223 {
     try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintWriter writer = new PrintWriter(baos, true, StandardCharsets.UTF_8)) {
       Map<String, Object> override =
-          mergeMaps(bindings, Collections.singletonMap(kotlinReplStdOut, writer));
+          mergeMaps(bindings, Collections.singletonMap(KOTLIN_REPL_STD_OUT, writer));
       String cleanedScript = cleanScript(script);
       ScriptResult result = super.execute(cleanedScript, override);
       return ScriptResult.create(result.getResult(), baos.toString());
     } catch (IOException e) {
-      throw new RuntimeException(e);
+      throw new IllegalStateException("Failed to flush repl stdio.", e);
     }
   }
 
   String cleanScript(String script) {
     // Apply replacements
-    String result = printlnPattern.matcher(script).replaceAll(kotlinReplStdOut + ".println(");
-    return printPattern.matcher(result).replaceAll(kotlinReplStdOut + ".print(");
+    String result = printlnPattern.matcher(script).replaceAll(KOTLIN_REPL_STD_OUT + ".println(");
+    return printPattern.matcher(result).replaceAll(KOTLIN_REPL_STD_OUT + ".print(");
   }
 }

@@ -1,12 +1,10 @@
 package io.github.pintowar.jweb.console.repl.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.pintowar.jweb.console.repl.ScriptResult;
 import java.util.Collections;
 import org.assertj.core.util.Arrays;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,9 +19,6 @@ class KotlinReplTest {
   void setUp() {
     repl = new KotlinRepl(Collections.singletonMap("applicationContext", "some object"));
   }
-
-  @AfterEach
-  void tearDown() {}
 
   @Test
   void shouldIncludeScriptReturnResultInTheResultObject() {
@@ -114,10 +109,10 @@ class KotlinReplTest {
                 \"\"\")
                 """
                 .stripIndent(),
-            repl.kotlinReplStdOut,
-            repl.kotlinReplStdOut,
-            repl.kotlinReplStdOut,
-            repl.kotlinReplStdOut);
+            repl.KOTLIN_REPL_STD_OUT,
+            repl.KOTLIN_REPL_STD_OUT,
+            repl.KOTLIN_REPL_STD_OUT,
+            repl.KOTLIN_REPL_STD_OUT);
 
     assertEquals(expectedResult, newScript);
   }
