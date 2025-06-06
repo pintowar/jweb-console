@@ -1,6 +1,7 @@
 package io.github.pintowar.jweb.console.repl.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.pintowar.jweb.console.repl.ScriptResult;
 import java.util.Collections;
@@ -76,5 +77,48 @@ class KotlinReplTest {
         assertThrows(IllegalArgumentException.class, () -> repl.execute(script));
 
     assertTrue(thrown.getMessage().contains("Error: incomplete code."));
+  }
+
+  @Test
+  void shouldCleanScript() {
+    String script =
+        """
+                println("Should be replaced")
+                System.out.println("Should NOT be replaced")
+                print("Should be replaced")
+                obj.print("Should NOT be replaced")
+                println( "Object with spaces" )
+                myObj.println( "Object with spaces" )
+                println(\"\"\"
+                Multiline
+                to be
+                replaced
+                \"\"\")
+                """
+            .stripIndent();
+
+    String newScript = repl.cleanScript(script);
+    String expectedResult =
+        String.format(
+            """
+                %s.println("Should be replaced")
+                System.out.println("Should NOT be replaced")
+                %s.print("Should be replaced")
+                obj.print("Should NOT be replaced")
+                %s.println( "Object with spaces" )
+                myObj.println( "Object with spaces" )
+                %s.println(\"\"\"
+                Multiline
+                to be
+                replaced
+                \"\"\")
+                """
+                .stripIndent(),
+            repl.kotlinReplStdOut,
+            repl.kotlinReplStdOut,
+            repl.kotlinReplStdOut,
+            repl.kotlinReplStdOut);
+
+    assertEquals(expectedResult, newScript);
   }
 }
