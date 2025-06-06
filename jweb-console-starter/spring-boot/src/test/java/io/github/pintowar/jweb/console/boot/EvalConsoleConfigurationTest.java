@@ -33,7 +33,7 @@ class EvalConsoleConfigurationTest {
   @MockBean private EvalConsoleHandler handler;
 
   @BeforeEach
-  public void setup() {
+  void setup() {
     when(handler.index()).thenReturn(ok().contentType(TEXT_HTML).build());
     when(handler.engines()).thenReturn(fromObject(singleton(mockEngine)).build());
     when(handler.eval(any())).thenReturn(fromObject(ScriptResult.create(2, "")).build());

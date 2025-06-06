@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import io.github.pintowar.jweb.console.repl.ScriptResult;
 import java.util.Collections;
 import org.assertj.core.util.Arrays;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,9 +19,6 @@ class GroovyReplTest {
   void setUp() {
     repl = new GroovyRepl(Collections.singletonMap("applicationContext", "some object"));
   }
-
-  @AfterEach
-  void tearDown() {}
 
   @Test
   void shouldIncludeScriptReturnResultInTheResultObject() {

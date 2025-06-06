@@ -11,7 +11,6 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.MultipleCompilationErrorsException;
@@ -22,7 +21,7 @@ public class GroovyShell extends ReplJsr223 {
 
   private static final long SCRIPT_TIMEOUT_IN_SECONDS = 5;
   private static final List<String> RECEIVERS_BLACK_LIST =
-      Stream.of(System.class, Thread.class).map(Class::getName).collect(Collectors.toList());
+      Stream.of(System.class, Thread.class).map(Class::getName).toList();
 
   public GroovyShell() {
     super();

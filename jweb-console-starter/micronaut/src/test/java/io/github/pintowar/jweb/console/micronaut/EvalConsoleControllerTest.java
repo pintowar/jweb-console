@@ -41,7 +41,7 @@ class EvalConsoleControllerTest {
 
       EvalConsoleController controller =
           new EvalConsoleController(applicationContext, resourceResolver);
-      controller.index().ifPresent((index) -> assertEquals("<h1>test</h1>", index));
+      controller.index().ifPresent(index -> assertEquals("<h1>test</h1>", index));
     }
   }
 
