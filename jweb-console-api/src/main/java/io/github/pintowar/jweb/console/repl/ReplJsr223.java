@@ -23,13 +23,9 @@ public abstract class ReplJsr223 implements Repl {
 
   @Override
   public ScriptResult execute(String script, Map<String, Object> bindings) {
-    if (script == null) {
-      throw new IllegalArgumentException("Script should not be null");
-    }
+    emptyCheck(script);
 
-    Map<String, Object> mergedBindings =
-        Stream.concat(defaultBindings.entrySet().stream(), bindings.entrySet().stream())
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    Map<String, Object> mergedBindings = mergeMaps(defaultBindings, bindings);
 
     try (StringWriter writer = new StringWriter()) {
       ScriptEngine engine = manager.getEngineByName(getEngineName());
@@ -49,5 +45,16 @@ public abstract class ReplJsr223 implements Repl {
       throw new IllegalArgumentException(
           topCause != null ? topCause.getMessage() : causeMessage, e);
     }
+  }
+
+  protected void emptyCheck(String script) {
+    if (script == null) {
+      throw new IllegalArgumentException("Script should not be null");
+    }
+  }
+
+  protected Map<String, Object> mergeMaps(Map<String, Object> origin, Map<String, Object> newMaps) {
+    return Stream.concat(origin.entrySet().stream(), newMaps.entrySet().stream())
+        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
   }
 }

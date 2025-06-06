@@ -11,5 +11,6 @@ dependencies {
     annotationProcessor(libs.bundles.boot.config.processors)
 
     testImplementation(libs.boot.test)
+    testCompileOnly(libs.jakarta.servlet)
 }
 

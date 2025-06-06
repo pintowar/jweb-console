@@ -5,8 +5,8 @@ import static java.util.Collections.singletonMap;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import javax.servlet.http.HttpServletMapping;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletMapping;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.function.RouterFunctions;
 
 class Helper {

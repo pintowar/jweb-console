@@ -1,0 +1,6 @@
+// checks if kotlin console works
+import java.util.Calendar
+
+val calendar = Calendar.getInstance()
+val isFriday = calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+println("Is it friday? ${if (isFriday) "Yes" else "No"}")
