@@ -45,12 +45,13 @@
     },
   ]);
 
-  export let evalResult: Promise<ScriptResult>;
-
   const shortcutsLabel = shortcutsDescription();
-  let sample = "";
-  let selectedEngine: string = NO_ENGINE;
-  let scriptBody = "";
+
+  let { evalResult = $bindable() } = $props<{ evalResult: Promise<ScriptResult> }>();
+
+  let sample = $state("");
+  let selectedEngine: string = $state(NO_ENGINE);
+  let scriptBody = $state("");
 
   function shortcutsDescription() {
     const platform = navigator.userAgent.toUpperCase();
@@ -80,7 +81,7 @@
     <span class="title">Edit code</span>
     <span class="engine">Engine:</span>
     <EngineSelector bind:selectedEngine change={handleChangeEngine} />
-    <button id="send-button" type="button" on:click={remoteEval}>&#9654; Execute</button>
+    <button id="send-button" type="button" onclick={remoteEval}>&#9654; Execute</button>
     <span class="shortcuts">{shortcutsLabel}</span>
 
     <div class="pulled-right">
