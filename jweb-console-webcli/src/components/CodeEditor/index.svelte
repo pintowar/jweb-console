@@ -1,17 +1,18 @@
 <script lang="ts">
   import type { ScriptResult } from "../../lib/interfaces";
-  import CodeMirror from "svelte-codemirror-editor";
   import { oneDark } from "@codemirror/theme-one-dark";
   import { keymap } from "@codemirror/view";
+  import CodeMirror from "svelte-codemirror-editor";
 
-  import EngineSelector from "./EngineSelector.svelte";
-  import SampleSelector from "./SampleSelector.svelte";
   import { NO_ENGINE } from "./constants";
   import { engineEval } from "../../lib/services";
   import { langByEngine } from "../../lib/langs";
 
-  import consoleLogo from "../../assets/console.png";
+  import EngineSelector from "./EngineSelector.svelte";
+  import SampleSelector from "./SampleSelector.svelte";
   import Card from "../Card.svelte";
+
+  import consoleLogo from "../../assets/console.png";
 
   const emptyEval = Promise.resolve({ result: "", stdout: [], stderr: [] });
   const shortcuts = [
@@ -78,7 +79,7 @@
     <img src={consoleLogo} alt="console-logo" />
     <span class="title">Edit code</span>
     <span class="engine">Engine:</span>
-    <EngineSelector bind:selectedEngine on:change={handleChangeEngine} />
+    <EngineSelector bind:selectedEngine change={handleChangeEngine} />
     <button id="send-button" type="button" on:click={remoteEval}>&#9654; Execute</button>
     <span class="shortcuts">{shortcutsLabel}</span>
 

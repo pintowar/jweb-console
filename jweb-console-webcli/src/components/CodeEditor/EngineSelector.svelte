@@ -1,16 +1,13 @@
 <script lang="ts">
-  import { createEventDispatcher, onMount } from "svelte";
-  import {} from "svelte";
+  import { onMount } from "svelte";
 
   import { listEngines } from "../../lib/services";
-  import Select from "../Select.svelte";
   import { NO_ENGINE } from "./constants";
+  import Select from "../Select.svelte";
 
-  export let selectedEngine: string;
+  let { selectedEngine = $bindable(), change } = $props<{ selectedEngine: string; change: () => void }>();
 
-  let engines: string[] = [];
-
-  const dispatch = createEventDispatcher();
+  let engines = $state<string[]>([]);
 
   onMount(async () => {
     const resp = await listEngines();
@@ -19,10 +16,6 @@
       selectedEngine = engines[0];
     }
   });
-
-  function onChange() {
-    dispatch("change");
-  }
 </script>
 
 {#if engines.length > 1}
@@ -32,7 +25,7 @@
       desc: it,
     }))}
     bind:value={selectedEngine}
-    on:change={onChange}
+    {change}
   />
 {:else}
   <span>{selectedEngine}</span>

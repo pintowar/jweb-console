@@ -2,10 +2,11 @@
   import { sampleSelect } from "../../lib/services";
   import Select from "../Select.svelte";
 
-  export let scriptBody: string;
-
-  export let sample: string;
-  export let selectedEngine: string;
+  let {
+    scriptBody = $bindable(),
+    sample,
+    selectedEngine,
+  } = $props<{ scriptBody: string; sample: string; selectedEngine: string }>();
 
   function samplePath(file: string) {
     const basePath = import.meta.env.DEV ? "" : import.meta.env.BASE_URL;
@@ -36,5 +37,5 @@
   options={listSamples(selectedEngine)}
   defaultValue={true}
   bind:value={sample}
-  on:change={sampleToScript}
+  change={sampleToScript}
 />
