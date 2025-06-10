@@ -14,7 +14,7 @@
 </script>
 
 {#if label}
-  <div>
+  <div class="selector">
     <label for={id}>{label}</label>
     <select {id} bind:value onchange={change}>
       {#each finalOptions as option (option.value)}
@@ -31,6 +31,12 @@
 {/if}
 
 <style>
+  .selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   select {
     background-color: #5f5f5f;
     font-family: sans-serif;
@@ -38,6 +44,5 @@
     height: 22px;
     color: #fff;
     border: 1px solid #ddd;
-    margin-right: 20px;
   }
 </style>

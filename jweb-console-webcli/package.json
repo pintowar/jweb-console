@@ -35,7 +35,8 @@
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.4",
     "@codemirror/legacy-modes": "^6.5.1",
-    "@codemirror/theme-one-dark": "^6.1.2",
+    "@uiw/codemirror-theme-tokyo-night": "^4.23.12",
+    "@uiw/codemirror-theme-tokyo-night-day": "^4.23.12",
     "svelte-codemirror-editor": "^1.4.1",
     "svelte-loading-spinners": "^0.3.6"
   }
