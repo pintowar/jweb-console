@@ -22,14 +22,14 @@
   <div>
     <label for={id}>{label}</label>
     <select {id} bind:value on:change={onChange}>
-      {#each finalOptions as option}
+      {#each finalOptions as option (option.value)}
         <option value={option.value}>{option.desc}</option>
       {/each}
     </select>
   </div>
 {:else}
   <select bind:value on:change={onChange}>
-    {#each finalOptions as option}
+    {#each finalOptions as option (option.value)}
       <option value={option.value}>{option.desc}</option>
     {/each}
   </select>

@@ -52,8 +52,8 @@
   let scriptBody = "";
 
   function shortcutsDescription() {
-    const platform = navigator.platform.toUpperCase();
-    if (platform.indexOf('MAC') >= 0) {
+    const platform = navigator.userAgent.toUpperCase();
+    if (platform.indexOf("MAC") >= 0) {
       return `${shortcuts[0].mac} or ${shortcuts[1].mac} (to run) | ${shortcuts[2].mac} (to clean)`;
     } else {
       return `${shortcuts[0].key} or ${shortcuts[1].key} (to run) | ${shortcuts[2].key} (to clean)`;

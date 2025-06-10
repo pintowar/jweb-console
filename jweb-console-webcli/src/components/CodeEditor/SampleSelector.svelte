@@ -13,15 +13,17 @@
   }
 
   function listSamples(engine: string) {
-    const samples = {
-      "get-environment-info": "Get environment info",
-      "list-spring-beans": "List all spring beans",
-      "is-it-friday": "Is it friday?",
-    };
-    return Object.keys(samples).map((key) => ({
-      value: samplePath(`${key}.${engine}`),
-      desc: samples[key] as string,
-    }));
+    const samples = new Map<string, string>([
+      ["get-environment-info", "Get environment info"],
+      ["list-spring-beans", "List all spring beans"],
+      ["is-it-friday", "Is it friday?"],
+    ]);
+    return Array.from(
+      samples.keys().map((key) => ({
+        value: samplePath(`${key}.${engine}`),
+        desc: samples.get(key) || "",
+      }))
+    );
   }
 
   async function sampleToScript() {
@@ -30,7 +32,7 @@
 </script>
 
 <Select
-  label={"Sample Code:"}
+  label="Sample Code:"
   options={listSamples(selectedEngine)}
   defaultValue={true}
   bind:value={sample}

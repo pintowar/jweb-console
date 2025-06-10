@@ -1,9 +1,9 @@
-/// <reference types="vitest" />
-
+/// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
+import { svelteTesting } from "@testing-library/svelte/vite";
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
   server: {
     port: 3000,
@@ -19,12 +19,12 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     coverage: {
-      provider: "istanbul",
+      provider: "v8",
       reporter: ["lcov", "html", "clover"],
     },
   },
-  plugins: [svelte({ hot: !process.env.VITEST })],
-  // optimizeDeps: {
-  //   exclude: ["codemirror", "@codemirror/language-javascript" /* ... */],
-  // }
+  plugins: [svelte(), svelteTesting()],
+  //   optimizeDeps: {
+  //     exclude: ["codemirror", "@codemirror/language-javascript" /* ... */],
+  //   }
 });
