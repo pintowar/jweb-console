@@ -10,7 +10,7 @@ description = "JWeb Console Client"
 project.layout.buildDirectory.set(file("dist"))
 
 node {
-    version.set("16.15.1")
+    version.set("22.16.0")
     download.set(true)
 }
 

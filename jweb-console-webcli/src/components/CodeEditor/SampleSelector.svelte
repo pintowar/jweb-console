@@ -2,10 +2,11 @@
   import { sampleSelect } from "../../lib/services";
   import Select from "../Select.svelte";
 
-  export let scriptBody: string;
-
-  export let sample: string;
-  export let selectedEngine: string;
+  let {
+    scriptBody = $bindable(),
+    sample,
+    selectedEngine,
+  } = $props<{ scriptBody: string; sample: string; selectedEngine: string }>();
 
   function samplePath(file: string) {
     const basePath = import.meta.env.DEV ? "" : import.meta.env.BASE_URL;
@@ -13,15 +14,17 @@
   }
 
   function listSamples(engine: string) {
-    const samples = {
-      "get-environment-info": "Get environment info",
-      "list-spring-beans": "List all spring beans",
-      "is-it-friday": "Is it friday?",
-    };
-    return Object.keys(samples).map((key) => ({
-      value: samplePath(`${key}.${engine}`),
-      desc: samples[key] as string,
-    }));
+    const samples = new Map<string, string>([
+      ["get-environment-info", "Get environment info"],
+      ["list-spring-beans", "List all spring beans"],
+      ["is-it-friday", "Is it friday?"],
+    ]);
+    return Array.from(
+      samples.keys().map((key) => ({
+        value: samplePath(`${key}.${engine}`),
+        desc: samples.get(key) || "",
+      }))
+    );
   }
 
   async function sampleToScript() {
@@ -30,9 +33,9 @@
 </script>
 
 <Select
-  label={"Sample Code:"}
+  label="Sample Code:"
   options={listSamples(selectedEngine)}
   defaultValue={true}
   bind:value={sample}
-  on:change={sampleToScript}
+  change={sampleToScript}
 />

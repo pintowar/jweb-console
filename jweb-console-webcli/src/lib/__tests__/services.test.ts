@@ -1,14 +1,14 @@
 import type { ScriptResult } from "../interfaces";
 import { engineEval, listEngines, sampleSelect } from "../services";
-import { setupMockFetch } from "../../testHelpers"
+import { setupMockFetch } from "../../testHelpers";
 
-const fetchCopy = global.fetch;
-const localStorageCopy = global.window.localStorage;
+const fetchCopy = globalThis.fetch;
+const localStorageCopy = globalThis.window.localStorage;
 
 describe("services suite tests", () => {
   afterAll(() => {
-    global.fetch = fetchCopy;
-    global.window.localStorage = localStorageCopy;
+    globalThis.fetch = fetchCopy;
+    globalThis.window.localStorage = localStorageCopy;
   });
 
   it("should succesfully eval engine", async () => {

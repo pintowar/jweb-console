@@ -13,9 +13,13 @@ export async function engineEval(engine: string, scriptBody: string): Promise<Sc
 }
 
 export async function listEngines(): Promise<string[]> {
-  const resp = await fetch(`/console/engines`);
-  const engines = (await resp.json()) as string[];
-  return engines;
+  try {
+    const resp = await fetch(`/console/engines`);
+    const engines = (await resp.json()) as string[];
+    return engines;
+  } catch {
+    return [];
+  }
 }
 
 export async function sampleSelect(sample: string): Promise<string> {

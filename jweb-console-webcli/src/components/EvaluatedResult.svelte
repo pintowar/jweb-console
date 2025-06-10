@@ -5,7 +5,7 @@
 
   import warning from "../assets/warning.png";
 
-  export let evalResult: Promise<ScriptResult>;
+  let { evalResult } = $props<{ evalResult: Promise<ScriptResult> }>();
 
   function consoleOutput(buffer: string[]) {
     return buffer.join("\n");

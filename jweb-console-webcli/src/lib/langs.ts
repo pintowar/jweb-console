@@ -24,7 +24,7 @@ export function langByEngine(engine: string): LanguageSupport {
     case "jruby":
       return ruby();
     case "kotlin":
-        return kotlin();
+      return kotlin();
     default:
       throw new Error("Invalid language");
   }
