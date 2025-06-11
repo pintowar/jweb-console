@@ -1,8 +1,8 @@
 [versions]
-boot-gradle = "3.0.5"
+boot-gradle = "3.0.0"
 management-gradle = "1.1.0"
 micronaut-gradle = "3.7.8"
-micronaut = "3.5.1"
+micronaut = "3.5.0"
 node = "3.1.1"
 
 servlet = "6.0.0"

@@ -11,7 +11,7 @@
 
 # Overview
 
-This application is intended for embedding a web scripting console (for groovy or jruby) in a java web application (Micronaut/Spring Boot)
+This application is intended for embedding a web scripting console (for groovy, jruby or kotlin) in a java web application (Micronaut/Spring Boot)
 which then could access the application context (for development purposes).
 
 ![image](https://user-images.githubusercontent.com/354264/233759240-456abea7-31b5-4147-9173-8fed51164f53.png)
@@ -26,13 +26,13 @@ To add the dependency add the following dependency to each framework:
 
 JWeb Console can be used in different web frameworks add the dependency using the following config:
 
-### For Spring Boot
+### For Spring Boot (>= 3.0.0)
 
 ```kotlin
 runtimeOnly("io.github.pintowar:jweb-console-spring-boot-starter:x.y.z")
 ```
 
-### For Micronaut
+### For Micronaut (>= 3.5.0)
 
 ```kotlin
 runtimeOnly("io.github.pintowar:jweb-console-micronaut-starter:x.y.z")
